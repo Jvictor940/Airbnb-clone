@@ -3,21 +3,22 @@ class ImagesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     
     def index
-        images = image.allrender json: images
+        images = Image.all 
+        render json: images
     end
     
     def show
-        image = image.find(params[:id])
+        image = Image.find(params[:id])
         render json: image, status: :created 
     end
     
     def create
-        image = image.create!(image_params)
+        image = Image.create!(image_params)
         render json: image, status: :created 
     end
     
     def destroy
-        image = image.find(params[:id])
+        image = Image.find(params[:id])
         image.destroy
         head :no_content 
     end
