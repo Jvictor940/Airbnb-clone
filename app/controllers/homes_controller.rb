@@ -3,7 +3,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
 def index
-    homes = Home.allrender json: homes
+    homes = Home.all render json: homes
 end
 
 def show
